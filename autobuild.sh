@@ -59,6 +59,29 @@ if ! command -v vcpkg &> /dev/null; then
     export PATH="$VCPKG_ROOT:$PATH"
 fi
 
+# 🔧 Check and install python3 and dependencies
+if ! command -v pip3 &> /dev/null || ! command -v python3 &> /dev/null; then
+    echo "🔧 python3 or pip3 not found. Installing..."
+    if command -v apt-get &> /dev/null; then
+        sudo apt-get update && sudo apt-get install -y python3 python3-pip python-is-python3
+    elif command -v dnf &> /dev/null; then
+        sudo dnf install -y python3 python3-pip
+    elif command -v pacman &> /dev/null; then
+        sudo pacman -S --noconfirm python python-pip
+    else
+        echo "❌ Package manager not supported. Please install python3 and pip manually."
+        exit 1
+    fi
+fi
+
+if [ -f "requirements.txt" ]; then
+    echo "📦 Installing python dependencies from requirements.txt..."
+    # Suppress warnings for system-managed environments to comply with standard behavior
+    pip3 install -r requirements.txt --break-system-packages 2>/dev/null || pip3 install -r requirements.txt
+else
+    echo "⚠️ requirements.txt not found, skipping python pip installation."
+fi
+
 if [ -d "$NUMICRO_BSP" ]; then
     echo "🔄 $NUMICRO_BSP already exists. Pulling latest changes..."
     # Run git pull in a subshell to avoid changing the working directory of the script
