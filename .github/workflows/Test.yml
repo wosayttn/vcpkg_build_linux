@@ -26,7 +26,7 @@ jobs:
         run: |
           REPO_ROOT="$GITHUB_WORKSPACE"
           mkdir -p artifacts
-          find "$REPO_ROOT/SampleCode" -type f -name "*.bin" -exec cp --parents {} artifacts/ \;
+          find "$REPO_ROOT" -type f -path "*/SampleCode/*.bin" -exec cp --parents {} artifacts/ \;
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
