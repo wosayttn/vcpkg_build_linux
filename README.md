@@ -1,8 +1,8 @@
-# Linux VSCode Build Subsystem for NuMicro BSP
+# Linux VCPKG Build Subsystem for NuMicro BSP
 
 [English](README.md) | [繁體中文](README_zh-TW.md)
 
-This directory forms an automated Continuous Integration (CI) and local building toolchain orchestrator for NuMicro CMSIS-based projects specifically curated through VSCode (`.csolution.yml`). It automates the retrieval, preparation, verification, and compilation of the Nuvoton Board Support Package (BSP) projects on Linux platforms.
+This directory forms an automated Continuous Integration (CI) and local building toolchain orchestrator for NuMicro CMSIS-based projects specifically curated through VCPKG (`.csolution.yml`). It automates the retrieval, preparation, verification, and compilation of the Nuvoton Board Support Package (BSP) projects on Linux platforms.
 
 ## Core Scripts & Files
 

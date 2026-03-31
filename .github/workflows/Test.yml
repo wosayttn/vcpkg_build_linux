@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Test VSCode Auto Build Scripts
+      - name: Test VCPKG Auto Build Scripts
         shell: bash
         run: |
           REPO_ROOT="$GITHUB_WORKSPACE"
